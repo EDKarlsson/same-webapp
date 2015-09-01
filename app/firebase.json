@@ -1,0 +1,9 @@
+{
+  "firebase": "sweltering-torch-9602",
+  "public": ".",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}
