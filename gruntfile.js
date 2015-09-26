@@ -1,5 +1,5 @@
 module.exports = function (grunt) {
-    var jsFiles = ['app/**/*.js','src/**/*.js'];
+    var jsFiles = ['app/js/**/*.js','src/**/*.js','!app/vendor/'];
     grunt.initConfig({
 
         'bower-install-simple': {
