@@ -2,12 +2,13 @@
 <html lang="en" ng-app="">
 <head>
     <meta charset="UTF-8">
-    <title>Contacts Manager</title>
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+    <title>Saddleback SAME</title>
+    <script>
+        angular.module('same', ['ngMaterial','ui.bootstrap','ui.router']).config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlRouterProvider) {
 
-    <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+        }]);
+        angular.module('same').controller
+    </script>
 </head>
 <body>
     <nav class="navbar navbar-default" role="navigation">
@@ -17,13 +18,14 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Contacts Manager</a>
+            <a class="navbar-brand" href="/">Saddleback SAME</a>
         </div>
 
         <div class="collapse navbar-collapse" id="nav-toggle">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/">Browse</a></li>
-                <li><a href="/add">Add Contact</a></li>
+                <li class="active"><a href="/">Home</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/login">Login</a></li>
             </ul>
             <form class="navbar-form navbr-right" role="search">
                 <input type="text" class="form-control" placeholder="Search">

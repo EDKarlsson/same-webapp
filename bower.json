@@ -1,0 +1,23 @@
+{
+  "name": "web-app",
+  "version": "0.0.0",
+  "homepage": "https://github.com/artemis-entr3rik/same-webapp",
+  "authors": [
+    "Dan Karlsson <dan.e.karlsson@jpl.nasa.gov>"
+  ],
+  "description": "App for Saddleback Chapter of SAME",
+  "main": "gruntfile.js",
+  "keywords": [
+    "same",
+    "webapp",
+    "saddleback"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
