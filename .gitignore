@@ -6,3 +6,4 @@ node_modules
 deploy
 build
 my-server
+bower_components
