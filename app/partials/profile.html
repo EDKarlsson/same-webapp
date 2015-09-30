@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="row">
+        <h3>Edit {{ profile.$id }}</h3>
+        <!-- we can edit the $firebaseObject instance just like any other JS object -->
+        <form ng-submit="saveProfile()">
+            <label>Name:</label>
+            <input ng-model="profile.name" type="text">
+            <label>Email:</label>
+            <input ng-model="profile.email" type="text">
+            <button type="submit">Save Changes</button>
+        </form>
+    </div>
+</div>

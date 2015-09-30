@@ -1,5 +1,5 @@
 module.exports = function (grunt) {
-    var jsFiles = ['app/js/**/*.js','src/**/*.js','!app/vendor/'];
+    var jsFiles = ['app/js/**/*.js', 'src/**/*.js', '!app/vendor/'];
     grunt.initConfig({
 
         'bower-install-simple': {
@@ -28,21 +28,16 @@ module.exports = function (grunt) {
                 src: ['src/directives/*.js'],
                 dest: 'build/same.directives.js'
             },
-            same:{
-                src:['src/same.js','src/services/*.js'],
-                dest:'build/same.js'
+            same: {
+                src: ['src/same.js', 'src/services/*.js'],
+                dest: 'build/same.js'
             },
-            controllers:{
-                src:['app/js/controllers/*.js'],
-                dest:'build/js/controllers.js'
+            controllers: {
+                src: ['app/js/controllers/*.js'],
+                dest: 'build/js/controllers.js'
             }
         },
-        bower_concat: {
-            js: {
-                dest: 'build/js/_bower.js',
-                cssDest: 'build/css/_bower.css'
-            }
-        },
+
         sass: {
             dist: {
                 options: {
@@ -58,7 +53,7 @@ module.exports = function (grunt) {
             server: {
                 options: {
                     hostname: 'localhost',
-                    port: 3000,
+                    port: 9000,
                     base: 'build/',
                     livereload: true
                 }
@@ -70,7 +65,8 @@ module.exports = function (grunt) {
                     'build/*.html'
                 ]
             }
-        }, jshint: {
+        },
+        jshint: {
             beforeconcat: jsFiles,
             afterconcat: ['build/same.js', 'build/same.directives.js'],
             options: {
@@ -89,15 +85,13 @@ module.exports = function (grunt) {
             },
             scripts: {
                 files: ['app/partials/**/*.html', 'app/js/**/*.js', 'app/css/**/*.css', 'app/index.html'],
-                tasks: ['concat', 'bower_concat', 'sass', 'copy']
+                tasks: ['concat', 'sass', 'copy:main']
             }
         },// End grunt watch
         copy: {
             main: {
                 files: [
-                    {
-                        expand: true, src: '**', cwd: 'app/bower_components/', dest: 'build/bower_components/'
-                    },
+
                     {
                         expand: true, src: '**', cwd: 'app/css/', dest: 'build/css/'
                     },
@@ -113,16 +107,26 @@ module.exports = function (grunt) {
                         src: 'app/index.html', cwd: '.', dest: 'build/index.html'
                     }
                 ]
+            },
+            bower:{
+                files:[
+                    {
+                        expand: true, src: '**', cwd: 'app/bower_components/', dest: 'build/bower_components/'
+                    }
+                ]
             }
+
         }, clean: {
-            build: ['app/bower_components', 'build/*']
+            all: ['app/bower_components', 'build/*'],
+            bower: ['app/bower_components'],
+            build: ['build/*']
         },// Clean files from build folder
         deploy: {
             clean: {
                 deploy: ['deploy/']
             },
-            copy:{
-                main:{
+            copy: {
+                main: {
                     files: [
                         {
                             expand: true, src: '**', cwd: 'app/bower_components/', dest: 'deploy/bower_components/'
@@ -148,6 +152,7 @@ module.exports = function (grunt) {
     }); // init config
 
     // Loads the tasks to be use
+    grunt.loadNpmTasks('grunt-bower');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-sass');
     grunt.loadNpmTasks('grunt-contrib-watch');
@@ -155,19 +160,21 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-wiredep');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-bower-concat');
     grunt.loadNpmTasks('grunt-bower-install-simple');
     grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-sass');
 
+    grunt.registerTask('cleanBower', ['clean:bower']);
+    grunt.registerTask('cleanAll', ['clean:all']);
+    grunt.registerTask('cleanBuild', ['clean:build']);
     grunt.registerTask('install', ['bower-install-simple']);
-    grunt.registerTask('compile', ['sass', 'copy']);
-    grunt.registerTask('lin', ['jshint:beforeconcat']);
-//    grunt.registerTask('bower_concat',['bower-concat']);
+    grunt.registerTask('compile', ['sass', 'copy:main','copy:bower']);
+    grunt.registerTask('lint', ['jshint:beforeconcat']);
     grunt.registerTask('wire', ['wiredep']);
 
     // Registers tasks to be executed when the task name is called.
-    grunt.registerTask('build', ['install', 'concat', 'bower_concat', 'copy', 'wire']);
-
+    grunt.registerTask('build', ['install', 'concat', 'copy:main', 'wire']);
+    grunt.registerTask('dev', ['jshint', 'connect', 'watch']);
     grunt.registerTask('default', ['install', 'jshint']);
     grunt.registerTask('server', ['build', 'connect', 'watch']);
     grunt.registerTask('deploy', ['install', 'compile', 'build', 'connect'])
