@@ -85,7 +85,7 @@ module.exports = function (grunt) {
             },
             scripts: {
                 files: ['app/partials/**/*.html', 'app/js/**/*.js', 'app/css/**/*.css', 'app/index.html'],
-                tasks: ['concat', 'sass', 'copy:main']
+                tasks: ['concat' , 'copy:main']
             }
         },// End grunt watch
         copy: {

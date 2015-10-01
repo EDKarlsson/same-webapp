@@ -2,16 +2,17 @@
 <html lang="en" ng-app="same">
 <head>
     <meta charset="UTF-8">
-    <title>Saddleback SAME</title>
+    <!--<title>Saddleback SAME</title>-->
     <link rel="icon" href="bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.svg">
+    <link rel="stylesheet" type="text/css" href="bower_components/angular-material/angular-material.min.css">
     <link rel="stylesheet" type="text/css" href="bower_components/angular-bootstrap/ui-bootstrap-csp.css">
     <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
     <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="bower_components/angular-material/angular-material.min.css">
     <link rel="stylesheet" type="text/css" href="bower_components/angular-ui/build/angular-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 
 </head>
-<body>
+<body >
     <nav class="navbar navbar-default" role="navigation">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-toggle">
@@ -25,18 +26,20 @@
         <div class="collapse navbar-collapse" id="nav-toggle">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="/">Home</a></li>
-                <li><a href="/contact">Contact</a></li>
-                <li><a href="/login">Login</a></li>
+                <li><a ui-sref="contact">Contact</a></li>
+                <li><a ui-sref="login">Login</a></li>
             </ul>
             <form class="navbar-form navbr-right" role="search">
                 <input type="text" class="form-control" placeholder="Search">
             </form>
         </div>
     </nav>
-
+    <md-button class="md-primary md-raised">Press me!!!!</md-button>
+    <div ui-view></div>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/angular-ui/build/angular-ui.min.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="bower_components/firebase/firebase.js"></script>
     <script src="bower_components/angularfire/dist/angularfire.min.js"></script>
@@ -47,7 +50,5 @@
     <script src="bower_components/angular-material/angular-material.min.js"></script>
     <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>
-    <script src="same.js"></script>
-    <script src="same.directives.js"></script>
 </body>
 </html>
