@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="same">
+<html lang="en" ng-app="same" class="background-page">
 <head>
     <meta charset="UTF-8">
     <!--<title>Saddleback SAME</title>-->
@@ -13,18 +13,20 @@
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
-<body class="md-background">
+<body class="background-page">
     <!--rgba-secondary-2-1-->
     <nav class="navbar navbar-default" role="navigation">
+        <md-toolbar class="">
+            <h1 class="md-toolbar-tools"><span class="color-secondary-1-0">Society of American Military Engineers (SAME)</span>
+            </h1>
+        </md-toolbar>
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-toggle">
-                <span class="icon-bar"></span>
+                <span class="icon-bar "></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Saddleback SAME</a>
         </div>
-
         <div class="collapse navbar-collapse" id="nav-toggle">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="/">Home</a></li>
@@ -35,15 +37,27 @@
                 <input type="text" class="form-control" placeholder="Search">
             </form>
         </div>
+
     </nav>
 
-    <!--<md-button class="md-primary md-raised">Press me!!!!</md-button>-->
-    <!--<div class="container" flex layout>-->
     <div class="container">
-            <div class="row">
-                <div ui-view></div>
-            </div>
+        <div class="row">
+            <div ui-view></div>
+        </div>
     </div>
+
+
+    <footer class="footer">
+
+        <md-whiteframe class="md-whiteframe-4z" layout>
+            <div class="container">
+                <div class="row">
+                    <span class="col-xs-12 main-footer">Saddleback Community College - Society of American Military Engineers</span>
+                </div>
+            </div>
+        </md-whiteframe>
+
+    </footer>
 
 
     <script src="bower_components/angular/angular.js"></script>

@@ -28,7 +28,7 @@
 }
 
 .color-secondary-1-0 {
-    color: #FFCF00
+    color: #ffffbe;
 }
 
 /* Main Secondary color (1) */
@@ -120,13 +120,30 @@
 /* Main Secondary color (2) */
 .rgba-secondary-2-1 {
     background-color: #E1F5FE;
-
-
 }
 
+.same-navbar {
+    background-color:red;
+}
+
+.same-footer {
+    background-color: red;
+}
+
+.background-page{
+    background-color: rgba(10, 100, 160, 1);
+}
+.center-panel {
+    background-color: #FFFFFF;
+}
+
+.main-footer{
+    color:#FFFFFF;
+}
 
 .background-secondary {
-    background-color: rgba(10, 140, 200,1);
+
+    background-color: rgba(20, 160, 200, 1);
 }
 .rgba-secondary-2-2 {
     color: rgba(80, 44, 198, 1)
@@ -140,6 +157,6 @@
     color: rgba(30, 6, 108, 1)
 }
 
-body{
-
+.committee-header{
+    text-align:center;
 }
