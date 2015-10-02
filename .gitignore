@@ -6,4 +6,5 @@ node_modules
 deploy
 build
 my-server
+/lib
 bower_components
