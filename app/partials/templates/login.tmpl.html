@@ -1,0 +1,31 @@
+<md-dialog class="md-accent" aria-label="Login Result" >
+    <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>{{ user.name || "Incorrect Password or Username"}}</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content style="max-width:800px;max-height:810px; ">
+            <div>
+                <p>
+                    Successfully Logged in.
+                </p>
+            </div>
+        </md-dialog-content>
+        <div class="md-actions" layout="row">
+
+
+            <md-button ng-click="answer('home')">
+                Back
+            </md-button>
+            <span flex></span>
+            <md-button ng-click="answer('Try again')" style="margin-right:20px;">
+                Try Again
+            </md-button>
+        </div>
+    </form>
+</md-dialog>

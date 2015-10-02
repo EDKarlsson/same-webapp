@@ -1,11 +1,12 @@
 "use strict";
 angular.module('same', ['ngMaterial', 'ui.bootstrap', 'ui.router', 'firebase', 'ngMessages']).config(['$stateProvider', '$urlRouterProvider', '$mdThemingProvider', function ($stateProvider, $urlRouterProvider, $mdThemingProvider) {
 
-    $mdThemingProvider.theme('default').primaryPalette('deep-orange');
-    $mdThemingProvider.theme('default').accentPalette('blue-grey');
+    $mdThemingProvider.theme('default').primaryPalette('red',{
+        'default':'700'
+    });
+    $mdThemingProvider.theme('default').accentPalette('light-blue');
 
-    $mdThemingProvider.theme('default').warnPalette('red');
-
+    $mdThemingProvider.theme('default').warnPalette('orange');
     $stateProvider.state('home', {
             url: '',
             templateUrl: 'partials/home.html',
@@ -13,13 +14,11 @@ angular.module('same', ['ngMaterial', 'ui.bootstrap', 'ui.router', 'firebase', '
         }
     ).state('login', {
             url: '/login',
-            templateUrl: 'partials/login.html',
-            controller: 'UserCtrl'
+            templateUrl: 'partials/login.html'
         }
     ).state('contact', {
             url: '/contact',
-            templateUrl: 'partials/contact.html',
-            controller: 'MainCtrl'
+            templateUrl: 'partials/contact.html'
         });
 }]);
 
@@ -28,13 +27,26 @@ angular.module('same').service('ConnectService', ['$scope', '$firebaseObject', f
 
 }]);
 
+var DialogController = function($scope, $mdDialog) {
+    $scope.hide = function () {
+        $mdDialog.hide();
+    };
+    $scope.cancel = function () {
+        $mdDialog.cancel();
+    };
+    $scope.answer = function (answer) {
+        $mdDialog.hide(answer);
+    };
+};
 
 
-angular.module('same').controller('MainCtrl', ['$scope', function ($scope, $mdDialog) {
+angular.module('same').controller('MainCtrl', ['$scope', '$mdDialog',function ($scope, $mdDialog) {
     $scope.testResponse = function () {
         console.log("Testing response");
 
     };
+
+
     $scope.status = '  ';
     $scope.showAlert = function (ev) {
         // Appending dialog to document.body to cover sidenav in docs app
@@ -66,10 +78,24 @@ angular.module('same').controller('MainCtrl', ['$scope', function ($scope, $mdDi
             $scope.status = 'You decided to keep your debt.';
         });
     };
-    $scope.showAdvanced = function (ev) {
+    $scope.showRegister = function (ev) {
         $mdDialog.show({
             controller: DialogController,
-            templateUrl: 'dialog1.tmpl.html',
+            templateUrl: 'partials/templates/register.tmpl.html',
+            parent: angular.element(document.body),
+            targetEvent: ev,
+            clickOutsideToClose: true
+        })
+            .then(function (answer) {
+                $scope.status = 'You said the information was "' + answer + '".';
+            }, function () {
+                $scope.status = 'You cancelled the dialog.';
+            });
+    };
+    $scope.showLogin = function (ev) {
+        $mdDialog.show({
+            controller: DialogController,
+            templateUrl: 'partials/templates/login.tmpl.html',
             parent: angular.element(document.body),
             targetEvent: ev,
             clickOutsideToClose: true
@@ -81,15 +107,3 @@ angular.module('same').controller('MainCtrl', ['$scope', function ($scope, $mdDi
             });
     };
 }]);
-
-angular.module('same').controller('DialogController', function ($scope, $mdDialog) {
-    $scope.hide = function () {
-        $mdDialog.hide();
-    };
-    $scope.cancel = function () {
-        $mdDialog.cancel();
-    };
-    $scope.answer = function (answer) {
-        $mdDialog.hide(answer);
-    };
-});

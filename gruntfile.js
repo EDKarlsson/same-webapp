@@ -85,7 +85,7 @@ module.exports = function (grunt) {
             },
             scripts: {
                 files: ['app/partials/**/*.html', 'app/js/**/*.js', 'app/css/**/*.css', 'app/index.html'],
-                tasks: ['concat' , 'copy:main']
+                tasks: ['concat', 'copy:main']
             }
         },// End grunt watch
         copy: {
@@ -100,7 +100,11 @@ module.exports = function (grunt) {
                     },
                     {
                         expand: true, src: '**', cwd: 'app/partials/', dest: 'build/partials/'
-                    }, {
+                    },
+                    {
+                        expand: true, src: '**', cwd: 'app/partials/templates/', dest: 'build/partials/templates/'
+                    },
+                    {
                         expand: true, src: '**', cwd: 'app/js/', dest: 'build/js/'
                     },
                     {
@@ -108,8 +112,8 @@ module.exports = function (grunt) {
                     }
                 ]
             },
-            bower:{
-                files:[
+            bower: {
+                files: [
                     {
                         expand: true, src: '**', cwd: 'app/bower_components/', dest: 'build/bower_components/'
                     }
@@ -168,7 +172,7 @@ module.exports = function (grunt) {
     grunt.registerTask('cleanAll', ['clean:all']);
     grunt.registerTask('cleanBuild', ['clean:build']);
     grunt.registerTask('install', ['bower-install-simple']);
-    grunt.registerTask('compile', ['sass', 'copy:main','copy:bower']);
+    grunt.registerTask('compile', ['sass', 'copy:main', 'copy:bower']);
     grunt.registerTask('lint', ['jshint:beforeconcat']);
     grunt.registerTask('wire', ['wiredep']);
 

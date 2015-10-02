@@ -5,14 +5,16 @@
     <!--<title>Saddleback SAME</title>-->
     <link rel="icon" href="bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.svg">
     <link rel="stylesheet" type="text/css" href="bower_components/angular-material/angular-material.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
     <link rel="stylesheet" type="text/css" href="bower_components/angular-bootstrap/ui-bootstrap-csp.css">
     <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
     <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="bower_components/angular-ui/build/angular-ui.min.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
 
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
-<body >
+<body class="md-background">
+    <!--rgba-secondary-2-1-->
     <nav class="navbar navbar-default" role="navigation">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-toggle">
@@ -34,8 +36,16 @@
             </form>
         </div>
     </nav>
-    <md-button class="md-primary md-raised">Press me!!!!</md-button>
-    <div ui-view></div>
+
+    <!--<md-button class="md-primary md-raised">Press me!!!!</md-button>-->
+    <!--<div class="container" flex layout>-->
+    <div class="container">
+            <div class="row">
+                <div ui-view></div>
+            </div>
+    </div>
+
+
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/angular-ui/build/angular-ui.min.js"></script>
