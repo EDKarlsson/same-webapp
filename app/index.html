@@ -2,7 +2,9 @@
 <html lang="en" ng-app="same" class="background-page">
 <head>
     <meta charset="UTF-8">
-    <!--<title>Saddleback SAME</title>-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Saddleback SAME</title>
     <link rel="icon" href="bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.svg">
     <link rel="stylesheet" type="text/css" href="bower_components/angular-material/angular-material.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
@@ -10,13 +12,11 @@
     <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
     <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="bower_components/angular-ui/build/angular-ui.min.css">
-
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body class="background-page">
-    <!--rgba-secondary-2-1-->
     <nav class="navbar navbar-default" role="navigation">
-        <md-toolbar class="">
+        <md-toolbar>
             <h1 class="md-toolbar-tools"><span class="color-secondary-1-0">Society of American Military Engineers (SAME)</span>
             </h1>
         </md-toolbar>
@@ -37,26 +37,17 @@
                 <input type="text" class="form-control" placeholder="Search">
             </form>
         </div>
-
     </nav>
 
-    <div class="container">
-        <div class="row">
-            <div ui-view></div>
-        </div>
-    </div>
+    <div ui-view></div>
 
-
-    <footer class="footer">
-
-        <md-whiteframe class="md-whiteframe-4z" layout>
-            <div class="container">
-                <div class="row">
-                    <span class="col-xs-12 main-footer">Saddleback Community College - Society of American Military Engineers</span>
-                </div>
+    <footer class="footer" layout>
+        <div class="container">
+            <div class="row">
+                <span class="col-xs-12 main-footer">Saddleback Community College - Society of American Military Engineers</span>
+                <span class="col-xs-12 main-footer">Web Application Developed and Maintained by Dan Karlsson</span>
             </div>
-        </md-whiteframe>
-
+        </div>
     </footer>
 
 

@@ -5,7 +5,7 @@
   "authors": [
     "Erik Karlsson <erikdkarlsson8@gmail.com>"
   ],
-  "description": "App for Saddleback Chapter of SAME",
+  "description": "App for Saddleback Chapter of Society of American Military Engineers.",
   "main": "index.js",
   "keywords": [
     "same",
