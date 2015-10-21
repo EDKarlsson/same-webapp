@@ -9,3 +9,4 @@ my-server
 /lib
 bower_components
 img/**
+app/img
