@@ -8,3 +8,4 @@ build
 my-server
 /lib
 bower_components
+img/**
