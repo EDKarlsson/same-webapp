@@ -1,8 +1,8 @@
 "use strict";
 angular.module('same', ['ngMaterial', 'ui.bootstrap', 'ui.router', 'firebase', 'ngMessages']).config(['$stateProvider', '$urlRouterProvider', '$mdThemingProvider', function ($stateProvider, $urlRouterProvider, $mdThemingProvider) {
 
-    $mdThemingProvider.theme('default').primaryPalette('red',{
-        'default':'700'
+    $mdThemingProvider.theme('default').primaryPalette('red', {
+        'default': '700'
     });
     $mdThemingProvider.theme('default').accentPalette('light-blue');
 
@@ -19,6 +19,10 @@ angular.module('same', ['ngMaterial', 'ui.bootstrap', 'ui.router', 'firebase', '
     ).state('contact', {
             url: '/contact',
             templateUrl: 'partials/contact.html'
+        }).state('gallery', {
+            url: '/gallery',
+            templateUrl: 'partials/photo.gallery.html'
+
         });
 }]);
 
@@ -27,7 +31,7 @@ angular.module('same').service('ConnectService', ['$scope', '$firebaseObject', f
 
 }]);
 
-var DialogController = function($scope, $mdDialog) {
+var DialogController = function ($scope, $mdDialog) {
     $scope.hide = function () {
         $mdDialog.hide();
     };
@@ -40,7 +44,7 @@ var DialogController = function($scope, $mdDialog) {
 };
 
 
-angular.module('same').controller('MainCtrl', ['$scope', '$mdDialog',function ($scope, $mdDialog) {
+angular.module('same').controller('MainCtrl', ['$scope', '$mdDialog', function ($scope, $mdDialog) {
     $scope.testResponse = function () {
         console.log("Testing response");
 
