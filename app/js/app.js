@@ -19,11 +19,17 @@ angular.module('same', ['ngMaterial', 'ui.bootstrap', 'ui.router', 'firebase', '
     ).state('about', {
             url: '/about',
             templateUrl: 'partials/aboutUs.html'
-        }).state('gallery', {
+        }
+    ).state('gallery', {
             url: '/gallery',
             templateUrl: 'partials/photo.gallery.html'
 
-        });
+        }
+    ).state('calendar', {
+            url: '/calendar',
+            templateUrl: 'partials/calendar.html'
+
+    });
 }]);
 
 angular.module('same').service('ConnectService', ['$scope', '$firebaseObject', function ($scope, $firebaseObject) {
