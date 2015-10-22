@@ -16,9 +16,9 @@ angular.module('same', ['ngMaterial', 'ui.bootstrap', 'ui.router', 'firebase', '
             url: '/login',
             templateUrl: 'partials/login.html'
         }
-    ).state('contact', {
-            url: '/contact',
-            templateUrl: 'partials/contact.html'
+    ).state('about', {
+            url: '/about',
+            templateUrl: 'partials/aboutUs.html'
         }).state('gallery', {
             url: '/gallery',
             templateUrl: 'partials/photo.gallery.html'
