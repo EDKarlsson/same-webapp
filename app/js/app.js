@@ -88,10 +88,10 @@ angular.module('same').controller('MainCtrl', ['$scope', '$mdDialog', function (
             $scope.status = 'You decided to keep your debt.';
         });
     };
-    $scope.showRegister = function (ev) {
+    $scope.showLogin = function (ev) {
         $mdDialog.show({
             controller: DialogController,
-            templateUrl: 'partials/templates/register.tmpl.html',
+            templateUrl: 'partials/templates/login.tmpl.html',
             parent: angular.element(document.body),
             targetEvent: ev,
             clickOutsideToClose: true
@@ -102,10 +102,10 @@ angular.module('same').controller('MainCtrl', ['$scope', '$mdDialog', function (
                 $scope.status = 'You cancelled the dialog.';
             });
     };
-    $scope.showLogin = function (ev) {
+    $scope.showRegister = function (ev) {
         $mdDialog.show({
             controller: DialogController,
-            templateUrl: 'partials/templates/login.tmpl.html',
+            templateUrl: 'partials/templates/registration.tmpl.html',
             parent: angular.element(document.body),
             targetEvent: ev,
             clickOutsideToClose: true

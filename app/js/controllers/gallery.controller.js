@@ -8,6 +8,7 @@
 "use strict";
 
 angular.module('same').controller('galleryCtrl', function ($scope) {
+
     $scope.photoList = [
         'img/events/2015/05.04.2015_same_spaghetti_bridge_00001.jpg',
         'img/events/2015/05.04.2015_same_spaghetti_bridge_00002.jpg',
@@ -34,4 +35,5 @@ angular.module('same').controller('galleryCtrl', function ($scope) {
         'img/group/2015_same_perez_study_groups_00004.jpg',
         'img/group/2015_same_perez_study_groups_00005.jpg'];
 });
+
 
