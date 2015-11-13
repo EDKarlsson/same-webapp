@@ -1,23 +1,22 @@
 "use strict";
 
 angular.module('same').controller('UserCtrl', ['$scope', '$firebaseObject', '$firebaseAuth', '$firebaseArray', function ($scope, $firebaseObject, $firebaseAuth, $firebaseArray) {
-    var fireRef = new Firebase('https://same-webapp.firebaseio.com');
+    var fireRef    = new Firebase('https://same-webapp.firebaseio.com');
     $scope.profile = $firebaseObject(fireRef.child('users'));
     $scope.authObj = $firebaseAuth(fireRef);
-    $scope.user = {
-        firstName: '',
-        lastName: '',
+    $scope.user    = {
+        name : '',
         email: ''
     };
 
     $scope.authObj.$createUser({
-        email: "my@email.com",
+        email   : "my@email.com",
         password: "mypassword"
     }).then(function (userData) {
         console.log("User " + userData.uid + " created successfully!");
 
         return $scope.authObj.$authWithPassword({
-            email: "my@email.com",
+            email   : "my@email.com",
             password: "mypassword"
         });
     }).then(function (authData) {
@@ -42,5 +41,17 @@ angular.module('same').controller('UserCtrl', ['$scope', '$firebaseObject', '$fi
         fireRef.set({foo: "baz"});  // this would update the database and $scope.data
     });
 
-
 }]);
+
+var user = {
+    "name"   : "",
+    "email"  : "",
+    "address": {
+        "street1": "",
+        "street2": "",
+        "city"   : "",
+        "state"  : "",
+        "zip"    : ""
+    },
+    "phone"  : ""
+};

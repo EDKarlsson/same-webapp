@@ -147,14 +147,11 @@ module.exports = function (grunt) {
                 bower_js: {
                     files: [
                         {
-                            flatten: true,
-                            cwd: '.',
-                            src: 'app/bower_components/firebase/firebase.js',
+                            flatten: true, cwd: '.', src: 'app/bower_components/firebase/firebase.js',
                             dest: 'build/vendor/firebase.js'
                         },
                         {
-                            flatten: true,
-                            cwd: '.', src: 'app/bower_components/bootstrap/dist/js/bootstrap-theme.min.js',
+                            flatten: true, cwd: '.', src: 'app/bower_components/bootstrap/dist/js/bootstrap-theme.min.js',
                             dest: 'build/vendor/bootstrap-theme.min.js'
                         },
                         {
@@ -177,10 +174,9 @@ module.exports = function (grunt) {
                             flatten: true, cwd: '.', src: 'app/bower_components/angular-ui/build/angular-ui.min.js',
                             dest: 'build/vendor/angular-ui.min.js'
                         },
-
                         {
                             flatten: true, cwd: '.', src: 'app/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
-                            dest: 'build/vendor/ui-bootstrap-csp.js'
+                            dest: 'build/vendor/ui-bootstrap-tpls.min.js'
                         },
                         {
                             flatten: true, cwd: '.', src: 'app/bower_components/angular-bootstrap/ui-bootstrap.min.js',
@@ -221,7 +217,7 @@ module.exports = function (grunt) {
                         {
                             flatten: true, cwd: '.', src: 'app/bower_components/angular-animate/angular-animate.min.js',
                             dest: 'build/vendor/angular-animate.min.js'
-                        },
+                        }
                     ]
                 },
                 bower_maps: {
@@ -242,7 +238,7 @@ module.exports = function (grunt) {
                         },
                         {
                             flatten: true, cwd: '.', src: 'app/bower_components/jquery/dist/jquery.min.map',
-                            dest: 'build/vendor/jquery.min.js'
+                            dest: 'build/vendor/jquery.min.map'
                         },
                         {
                             flatten: true, cwd: '.', src: 'app/bower_components/angular-messages/angular-messages.min.js.map',
@@ -256,7 +252,7 @@ module.exports = function (grunt) {
                             flatten: true, cwd: '.', src: 'app/bower_components/angular-animate/angular-animate.min.js.map',
                             dest: 'build/vendor/angular-animate.min.js.map'
                         }
-                       ]
+                    ]
                 }
             }, // Copy tasks: main(app), bower_css, bower_js,angular_js,bower_maps
             clean: {
@@ -304,6 +300,8 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-karma');
+    grunt.loadNpmTasks('grunt-protractor-runner');
 
     grunt.registerTask('copyBower', ['copy:bower']);
     grunt.registerTask('cleanBower', ['clean:bower']);
@@ -316,10 +314,10 @@ module.exports = function (grunt) {
 //    grunt.registerTask('uglify', ['uglify']);
 
 // Registers tasks to be executed when the task name is called.
+    grunt.registerTask('buildApp', 'Copies all necessary bower files into the build folder', ['jshint', 'copy', 'wire']);
     grunt.registerTask('build', ['jshint', 'concat', 'copy:main', 'wire']);
     grunt.registerTask('dev', ['jshint', 'connect', 'watch']);
     grunt.registerTask('default', ['install', 'jshint']);
-    grunt.registerTask('server', ['build', 'connect', 'watch']);
-    grunt.registerTask('deploy', ['install', 'build', 'deploy'])
-}
-; // Wrapper function
+    grunt.registerTask('server', ['install','build', 'connect', 'watch']);
+    grunt.registerTask('deploy', ['install', 'build', 'deploy']);
+}; // Wrapper function
