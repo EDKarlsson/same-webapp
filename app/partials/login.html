@@ -1,50 +1,40 @@
-<!--<div class="container" ng-controller="MainCtrl">-->
-<div class="container" >
-    <div class="row">
-        <!--<md-whiteframe class="md-whiteframe-14dp" layout-wrap>-->
-        <div class="container">
-            <div class="row">
-                <md-content class="autoScroll">
-                    <md-input-container class="md-icon-float">
-                        <!-- Use floating label instead of placeholder -->
-                        <label>Name</label>
-                        <md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon>
-                        <input ng-model="user.name" type="text">
-                    </md-input-container>
-                    <md-input-container>
-                        <!-- Use floating placeholder instead of label -->
-                        <md-icon md-svg-src="img/icons/ic_email_24px.svg" class="email"></md-icon>
-                        <input ng-model="user.email" type="email" placeholder="Email (required)"
-                               ng-required="true">
-                    </md-input-container>
-                    <md-input-container md-no-float>
-                        <md-icon md-svg-src="img/icons/ic_phone_24px.svg"></md-icon>
-                        <input ng-model="user.phone" type="text" placeholder="Phone Number">
-                    </md-input-container>
-                    <md-input-container md-no-float>
-                        <md-icon md-svg-src="img/icons/ic_place_24px.svg" style="display:inline-block;"></md-icon>
-                        <input ng-model="user.address" type="text" placeholder="Address">
-                    </md-input-container>
+<div class="container" ng-controller="AuthCtrl as authCtrl">
+    <form class="container" ng-submit="authCtrl.login()">
+        <div class="row">
+            <!--<md-whiteframe class="md-whiteframe-14dp" layout-wrap>-->
+            <div class="container">
+                <div class="row">
+                    <md-content class="autoScroll">
+                        <md-input-container>
+                            <!-- Use floating placeholder instead of label -->
+                            <md-icon md-svg-src="img/icons/ic_email_24px.svg" class="email"></md-icon>
+                            <input ng-model="authCtrl.user.email" type="email" placeholder="Email (required)"
+                                   ng-required="true">
+                        </md-input-container>
+                        <md-input-container md-no-float>
+                            <md-icon md-svg-src="img/icons/ic_lock_open_48px.svg" style="display:inline-block;"></md-icon>
+                            <input ng-model="authCtrl.user.password" type="Password" placeholder="Password">
+                        </md-input-container>
 
-                </md-content>
+                    </md-content>
+                </div>
+            </div>
+            <!--</md-whiteframe>-->
+        </div>
+        <div class="row">
+            <div class="background-secondary">
+                <div layout="row" layout layout-padding>
+                    <md-button class="md-primary md-raised" ng-click="showLogin($event)" flex flex="100%">
+                        Login
+                    </md-button>
+                    <md-button class="md-primary md-raised" ng-click="showRegister($event)" flex flex="100%">
+                        Register
+                    </md-button>
+                    <md-button class="md-primary md-raised" ui-sref="home" flex flex="100%">
+                        Go Back
+                    </md-button>
+                </div>
             </div>
         </div>
-        <!--</md-whiteframe>-->
-    </div>
-    <div class="row">
-        <div class="background-secondary">
-            <div layout="row" layout layout-padding>
-                <md-button class="md-primary md-raised" ng-click="showLogin($event)" flex flex="100%">
-                    Already have an account? -> Login
-                </md-button>
-                <md-button class="md-primary md-raised" ng-click="showRegister($event)" flex flex="100%">
-                    Register
-                </md-button>
-                <md-button class="md-primary md-raised" ui-sref="home" flex flex="100%">
-                    Go Back
-                </md-button>
-            </div>
-        </div>
-    </div>
+    </form>
 </div>
-

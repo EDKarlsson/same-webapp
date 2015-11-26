@@ -1,25 +1,25 @@
 "use strict";
 
 angular.module('same').controller("AuthCtrl", ["AuthService","$state",function (AuthService, $state) {
-    var auth = this;
-    auth.user = {
+    var authCtrl = this;
+    authCtrl.user = {
         'email': '',
         'password':''
     };
 
-    auth.login = function() {
-        AuthService.$authWithPassword(auth.user).then(function (auth) {
+    authCtrl.login = function() {
+        AuthService.$authWithPassword(authCtrl.user).then(function (auth) {
             $state.go('home');
         }, function (error) {
-            auth.error = error;
+            authCtrl.error = error;
         });
     };
 
-    auth.registerUser = function() {
-        AuthService.$createUser(auth.user).then(function (user) {
-            auth.login();
+    authCtrl.registerUser = function() {
+        AuthService.$createUser(authCtrl.user).then(function (user) {
+            authCtrl.login();
         }, function (error) {
-            auth.error = error;
+            authCtrl.error = error;
         });
     };
 }]);

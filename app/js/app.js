@@ -1,5 +1,5 @@
 "use strict";
-angular.module('same', ['ngMaterial', 'ui.bootstrap', 'ui.router', 'firebase', 'ngMessages']).config(['$stateProvider', '$urlRouterProvider', '$mdThemingProvider', function ($stateProvider, $urlRouterProvider, $mdThemingProvider) {
+angular.module('same', ['ngMaterial', 'ui.bootstrap', 'ui.router', 'firebase', 'ngMessages', 'angular-md5']).config(['$stateProvider', '$urlRouterProvider', '$mdThemingProvider', function ($stateProvider, $urlRouterProvider, $mdThemingProvider) {
 
     $mdThemingProvider.theme('default').primaryPalette('red', {
         'default': '700'
@@ -14,10 +14,28 @@ angular.module('same', ['ngMaterial', 'ui.bootstrap', 'ui.router', 'firebase', '
     }).state('login', {
         url        : '/login',
         templateUrl: 'partials/login.html',
+        resolve    : {
+            requireNoAuth: function ($state, Auth) {
+                return Auth.$requireAuth().then(function (Auth) {
+                    $state.go('home');
+                }, function (error) {
+                    return;
+                });
+            }
+        }
 //        controller : 'AuthCtrl'
     }).state('register', {
         url        : '/register',
         templateUrl: 'partials/templates/register.tmpl.html',
+        resolve    : {
+            requireNoAuth: function ($state, Auth) {
+                return Auth.$requireAuth().then(function (Auth) {
+                    $state.go('home');
+                }, function (error) {
+                    return;
+                });
+            }
+        }
 //        controller : 'AuthCtrl'
     }).state('about', {
         url        : '/about',
@@ -28,6 +46,22 @@ angular.module('same', ['ngMaterial', 'ui.bootstrap', 'ui.router', 'firebase', '
     }).state('calendar', {
         url        : '/calendar',
         templateUrl: 'partials/calendar.html'
+    }).state('profile', {
+        url        : '/profile',
+        controller : 'ProfileCtrl',
+        templateUrl: 'partials/templates/profile.tmpl.html',
+        resolve    : {
+            auth   : function ($state, Users, Auth) {
+                return Auth.$requireAuth().catch(function () {
+                    $state.go('home');
+                });
+            },
+            profile: function (Users, Auth) {
+                return Auth.$requireAuth().then(function (auth) {
+                    return Users.getProfile(auth.uid).$loaded();
+                });
+            }
+        }
     });
 }]);
 
