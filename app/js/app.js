@@ -19,6 +19,8 @@ angular.module('same', ['ngMaterial', 'ui.bootstrap', 'ui.router', 'firebase', '
                 return Auth.$requireAuth().then(function (Auth) {
                     $state.go('home');
                 }, function (error) {
+                    console.log("Throwing error");
+                    console.log(error);
                     return;
                 });
             }
