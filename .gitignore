@@ -10,3 +10,4 @@ my-server
 bower_components
 img/**
 app/img
+.vagrant/
