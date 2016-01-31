@@ -55,6 +55,7 @@
     "grunt-protractor-runner": "^2.1.2",
     "grunt-sass": "^1.1.0",
     "grunt-wiredep": "^2.0.0",
+    "gulp": "^3.9.0",
     "karma": "^0.13.15"
   },
   "dependencies": {

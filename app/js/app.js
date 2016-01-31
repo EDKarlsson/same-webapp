@@ -8,13 +8,13 @@ angular.module('same', ['ngMaterial', 'ui.bootstrap', 'ui.router', 'firebase', '
 
     $mdThemingProvider.theme('default').warnPalette('orange');
     $stateProvider.state('home', {
-        url        : '',
+        url: '',
         templateUrl: 'partials/home.html',
-        controller : 'MainCtrl'
+        controller: 'MainCtrl'
     }).state('login', {
-        url        : '/login',
+        url: '/login',
         templateUrl: 'partials/login.html',
-        resolve    : {
+        resolve: {
             requireNoAuth: function ($state, Auth) {
                 return Auth.$requireAuth().then(function (Auth) {
                     $state.go('home');
@@ -27,9 +27,9 @@ angular.module('same', ['ngMaterial', 'ui.bootstrap', 'ui.router', 'firebase', '
         }
 //        controller : 'AuthCtrl'
     }).state('register', {
-        url        : '/register',
+        url: '/register',
         templateUrl: 'partials/templates/register.tmpl.html',
-        resolve    : {
+        resolve: {
             requireNoAuth: function ($state, Auth) {
                 return Auth.$requireAuth().then(function (Auth) {
                     $state.go('home');
@@ -40,20 +40,20 @@ angular.module('same', ['ngMaterial', 'ui.bootstrap', 'ui.router', 'firebase', '
         }
 //        controller : 'AuthCtrl'
     }).state('about', {
-        url        : '/about',
+        url: '/about',
         templateUrl: 'partials/aboutUs.html'
     }).state('gallery', {
-        url        : '/gallery',
+        url: '/gallery',
         templateUrl: 'partials/photo.gallery.html'
     }).state('calendar', {
-        url        : '/calendar',
+        url: '/calendar',
         templateUrl: 'partials/calendar.html'
     }).state('profile', {
-        url        : '/profile',
-        controller : 'ProfileCtrl',
+        url: '/profile',
+        controller: 'ProfileCtrl',
         templateUrl: 'partials/templates/profile.tmpl.html',
-        resolve    : {
-            auth   : function ($state, Users, Auth) {
+        resolve: {
+            auth: function ($state, Users, Auth) {
                 return Auth.$requireAuth().catch(function () {
                     $state.go('home');
                 });
