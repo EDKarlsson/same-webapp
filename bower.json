@@ -29,6 +29,10 @@
     "angular-ui-router": "~0.2.15",
     "firebase": "~2.3.0",
     "angularfire": "~1.1.2",
-    "angular-messages": "~1.4.7"
+    "angular-messages": "~1.4.7",
+    "angular-md5": "~0.1.8"
+  },
+  "devDependencies": {
+    "angular-md5": "~0.1.10"
   }
 }

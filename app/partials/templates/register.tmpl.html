@@ -1,9 +1,15 @@
-<form ng-submit="AuthCtrl.register()">
-    <div class="input-group">
-        <input type="email" class="form-control" placeholder="Email" ng-model="auth.user.email">
+<div class="container" ng-controller="AuthCtrl as authCtrl">
+
+    <div ng-show="authCtrl.error">
+        <span>{{ authCtrl.error.message }}</span>
     </div>
-    <div class="input-group">
-        <input type="password" class="form-control" placeholder="Password" ng-model="auth.user.password">
-    </div>
-    <input type="submit" class="btn btn-default" value="Register">
-</form>
+    <form ng-submit="AuthCtrl.register()">
+        <div class="input-group">
+            <input type="email" class="form-control" placeholder="Email" ng-model="auth.user.email">
+        </div>
+        <div class="input-group">
+            <input type="password" class="form-control" placeholder="Password" ng-model="auth.user.password">
+        </div>
+        <input type="submit" class="btn btn-default" value="Register">
+    </form>
+</div>
